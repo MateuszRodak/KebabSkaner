@@ -52,7 +52,10 @@
         <servlet-class>pl.mr.kebab.controller.MenuControllerServlet</servlet-class>
     </servlet>
 
-
+    <servlet>
+        <servlet-name>PorcjaControllerServlet</servlet-name>
+        <servlet-class>pl.mr.kebab.controller.PorcjaControllerServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>AdresControllerServlet</servlet-name>
@@ -69,6 +72,10 @@
         <url-pattern>/menu/*</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>PorcjaControllerServlet</servlet-name>
+        <url-pattern>/porcja/*</url-pattern>
+    </servlet-mapping>
 
 
 
