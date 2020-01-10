@@ -29,7 +29,7 @@
 </center>
 <div align="center">
     <table border="1" cellpadding="5">
-        <caption><h2>Lista <c:if test="${narrowId != null}">zawężona</c:if></h2></caption>
+        <caption><h2>Lista <c:if test="${not empty narrowId}">zawężona</c:if></h2></caption>
         <tr>
             <th>ID</th>
             <th>Restauracja</th>
