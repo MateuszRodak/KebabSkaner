@@ -28,7 +28,7 @@ public class MenuControllerServlet extends AbstractOwnerConrtollerServlet {
     protected void list(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         String narrowId = request.getParameter("narrowId");
         List<Menu> list;
-        if (narrowId != null) {
+        if (narrowId != null && !narrowId.equals("")) {
             int id = Integer.parseInt(narrowId);
             list = menuDAO.listForRestauracja(id);
         } else {
