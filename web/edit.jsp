@@ -24,7 +24,6 @@
 <a href="${context}/restauracja?operacja=list">Baza restauracji</a> <br>
 <a href="${context}/menu?operacja=list">Baza menu</a> <br>
 <a href="${context}/porcja?operacja=list">Baza porcji</a> <br>
-<a href="${context}/adres?operacja=list">Baza adresów</a> <br>
-<a href="${context}/adres?operacja=list">Baza adresów</a> <br>
+<a href="${context}/platnosc?operacja=list">Baza platnosci</a> <br>
   </body>
 </html>

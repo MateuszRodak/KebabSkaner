@@ -28,6 +28,17 @@ public class Platnosc {
         this.restauracja = restauracja;
     }
 
+    public Platnosc(int id, int idRest, String rodzajPlatnosci) {
+        this.id = id;
+        this.idRest = idRest;
+        this.rodzajPlatnosci = rodzajPlatnosci;
+    }
+
+    public Platnosc(int idRest, String rodzajPlatnosci) {
+        this.idRest = idRest;
+        this.rodzajPlatnosci = rodzajPlatnosci;
+    }
+
     public int getId() {
         return id;
     }

@@ -57,6 +57,13 @@
         <servlet-class>pl.mr.kebab.controller.PorcjaControllerServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>PlatnoscControllerServlet</servlet-name>
+        <servlet-class>pl.mr.kebab.controller.PlatnoscControllerServlet</servlet-class>
+    </servlet>
+
+
+
     <servlet-mapping>
         <servlet-name>AdresControllerServlet</servlet-name>
         <url-pattern>/adres/*</url-pattern>
@@ -76,6 +83,12 @@
         <servlet-name>PorcjaControllerServlet</servlet-name>
         <url-pattern>/porcja/*</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PlatnoscControllerServlet</servlet-name>
+        <url-pattern>/platnosc/*</url-pattern>
+    </servlet-mapping>
+
 
 
     <servlet>
