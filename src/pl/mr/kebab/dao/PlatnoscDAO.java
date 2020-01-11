@@ -25,7 +25,7 @@ public class PlatnoscDAO extends AbstractDAO {
     }
 
     public boolean insert(Platnosc platnosc) throws SQLException {
-        String sql = "INSERT INTO OWNER.PLATNOSC (ID_REST, RODZAJ_PLATNOSC) VALUES (?, ?)";
+        String sql = "INSERT INTO OWNER.PLATNOSC (ID_REST, RODZAJ_PLATNOSCI) VALUES (?, ?)";
         connect();
 
         PreparedStatement statement = jdbcConnection.prepareStatement(sql);

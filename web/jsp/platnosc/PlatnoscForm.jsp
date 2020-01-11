@@ -59,7 +59,7 @@
                 <tr>
                     <th>RodzajPlatnosci:</th>
                     <td>
-                        <input type="text" name="rodzaj paltnosci" size="45"
+                        <input type="text" name="rodzajPlatnosci" size="45"
                                value="<c:out value='${platnosc.rodzajPlatnosci}' />"
                         />
                     </td>

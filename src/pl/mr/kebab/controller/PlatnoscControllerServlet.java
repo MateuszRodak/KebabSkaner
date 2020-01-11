@@ -2,12 +2,8 @@ package pl.mr.kebab.controller;
 
 
 import pl.mr.kebab.dao.PlatnoscDAO;
-import pl.mr.kebab.dao.PorcjaDAO;
-//import pl.mr.kebab.dao.MenuDAO;
 import pl.mr.kebab.dao.RestauracjaDAO;
-//import pl.mr.kebab.model.Menu;
 import pl.mr.kebab.model.Platnosc;
-import pl.mr.kebab.model.Porcja;
 import pl.mr.kebab.model.Restauracja;
 
 import javax.servlet.RequestDispatcher;
