@@ -41,7 +41,7 @@ public class PorcjaControllerServlet extends AbstractOwnerConrtollerServlet {
     }
 
     protected void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/menu/PorcjaForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/porcja/PorcjaForm.jsp");
         String narrowId = request.getParameter("narrowId");
         request.setAttribute("narrowId", narrowId);
 
@@ -56,7 +56,7 @@ public class PorcjaControllerServlet extends AbstractOwnerConrtollerServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String narrowId = request.getParameter("narrowId");
         Porcja existingPorcja = porcjaDAO.get(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/menu/PorcjaForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/porcja/PorcjaForm.jsp");
         request.setAttribute("idMenu", existingPorcja);
         request.setAttribute("narrowId", narrowId);
 
