@@ -32,6 +32,7 @@
         <caption><h2>Lista <c:if test="${not empty narrowId}">zawężona</c:if></h2></caption>
         <tr>
             <th>ID</th>
+            <th>Restauracja</th>
             <th>Produkt</th>
             <th>Wielkosc</th>
             <th>Jednostka</th>
@@ -41,7 +42,8 @@
         <c:forEach var="porcja" items="${listPorcja}">
             <tr>
                 <td><c:out value="${porcja.id}"/></td>
-                <td><c:out value="${porcja.idMenu}"/></td>
+                <td><c:out value="${porcja.menu.restauracja.nazwa}"/>, <c:out value="${porcja.menu.restauracja.adres.miejscowosc}"/></td>
+                <td><c:out value="${porcja.menu.nazwaProduktu}"/></td>
                 <td><c:out value="${porcja.wielkosc}"/></td>
                 <td><c:out value="${porcja.jednostka}"/></td>
                 <td><c:out value="${porcja.opis}"/></td>
