@@ -17,9 +17,8 @@ public class AdresControllerServlet extends AbstractOwnerConrtollerServlet {
 
     private AdresDAO adresDAO;
 
-    public void init() {
-        super.init();
-        adresDAO = new AdresDAO(jdbcURL, jdbcOwnerUsername, jdbcOwnerPassword);
+    public void setConnectionProperies() {
+        adresDAO = new AdresDAO(jdbcURL, jdbcUsername, jdbcPassword);
     }
 
     protected void list(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {

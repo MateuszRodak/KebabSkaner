@@ -19,6 +19,7 @@
     <h1>Restauracje</h1>
     <div align="left">
         <a href="${context}">Home</a>
+        <a href="${context}/edit.jsp">Lista tabel</a>
     </div>
     <h2>
         <a href="${context}/restauracja?operacja=new">Dodaj nową restaurację</a>

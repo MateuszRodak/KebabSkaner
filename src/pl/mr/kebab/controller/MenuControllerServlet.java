@@ -19,10 +19,9 @@ public class MenuControllerServlet extends AbstractOwnerConrtollerServlet {
     private MenuDAO menuDAO;
     private RestauracjaDAO restauracjaDAO;
 
-    public void init() {
-        super.init();
-        restauracjaDAO = new RestauracjaDAO(jdbcURL, jdbcOwnerUsername, jdbcOwnerPassword);
-        menuDAO = new MenuDAO(jdbcURL, jdbcOwnerUsername, jdbcOwnerPassword);
+    public void setConnectionProperies() {
+        restauracjaDAO = new RestauracjaDAO(jdbcURL, jdbcUsername, jdbcPassword);
+        menuDAO = new MenuDAO(jdbcURL, jdbcUsername, jdbcPassword);
     }
 
     protected void list(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {

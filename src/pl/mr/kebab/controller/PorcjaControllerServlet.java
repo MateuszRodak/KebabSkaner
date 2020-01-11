@@ -20,10 +20,9 @@ public class PorcjaControllerServlet extends AbstractOwnerConrtollerServlet {
     private PorcjaDAO porcjaDAO;
     private MenuDAO menuDAO;
 
-    public void init() {
-        super.init();
-        menuDAO = new MenuDAO(jdbcURL, jdbcOwnerUsername, jdbcOwnerPassword);
-        porcjaDAO = new PorcjaDAO(jdbcURL, jdbcOwnerUsername, jdbcOwnerPassword);
+    public void setConnectionProperies() {
+        menuDAO = new MenuDAO(jdbcURL, jdbcUsername, jdbcPassword);
+        porcjaDAO = new PorcjaDAO(jdbcURL, jdbcUsername, jdbcPassword);
     }
 
     protected void list(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {

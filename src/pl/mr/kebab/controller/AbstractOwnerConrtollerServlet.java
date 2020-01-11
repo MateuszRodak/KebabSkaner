@@ -11,10 +11,12 @@ public abstract class AbstractOwnerConrtollerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected String jdbcURL;
-    protected String jdbcOwnerUsername;
-    protected String jdbcOwnerPassword;
-    protected String jdbcGuestUsername;
-    protected String jdbcGuestPassword;
+    private String jdbcOwnerUsername;
+    private String jdbcOwnerPassword;
+    private String jdbcGuestUsername;
+    private String jdbcGuestPassword;
+    protected String jdbcUsername;
+    protected String jdbcPassword;
 
     public void init() {
         jdbcURL = getServletContext().getInitParameter("jdbcURL");
@@ -22,6 +24,9 @@ public abstract class AbstractOwnerConrtollerServlet extends HttpServlet {
         jdbcOwnerPassword = getServletContext().getInitParameter("jdbcOwnerPassword");
         jdbcGuestUsername = getServletContext().getInitParameter("jdbcGuestUsername");
         jdbcGuestPassword = getServletContext().getInitParameter("jdbcGuestPassword");
+
+        jdbcUsername = jdbcGuestUsername;
+        jdbcPassword = jdbcGuestPassword;
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,6 +35,19 @@ public abstract class AbstractOwnerConrtollerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+
+        String role = String.valueOf(request.getSession().getAttribute("role"));
+
+        if (role != null && role.equals("owner")) {
+            jdbcUsername = jdbcOwnerUsername;
+            jdbcPassword = jdbcOwnerPassword;
+            setConnectionProperies();
+        } else {
+            jdbcUsername = jdbcGuestUsername;
+            jdbcPassword = jdbcGuestPassword;
+            setConnectionProperies();
+        }
+
         String operacja = request.getParameter("operacja");
         try {
             switch (operacja) {
@@ -68,4 +86,6 @@ public abstract class AbstractOwnerConrtollerServlet extends HttpServlet {
     protected abstract void update(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException;
 
     protected abstract void delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException;
+
+    protected abstract void setConnectionProperies();
 }

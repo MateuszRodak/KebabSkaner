@@ -19,6 +19,7 @@
     <h1>Porcja</h1>
     <div align="left">
         <a href="${context}">Home</a>
+        <a href="${context}/edit.jsp">Lista tabel</a>
     </div>
     <h2>
         <a href="${context}/porcja?operacja=new&narrowId=${narrowId}">Dodaj nową porcje</a>

@@ -1,24 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Mateusz - Laptop
-  Date: 05.01.2020
-  Time: 14:34
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<c:set var="context" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>tytuł</title>
-  </head>
-  <body>
-<a href="${context}/adres?operacja=list">Baza adresów</a> <br>
-<a href="${context}/restauracja?operacja=list">Baza restauracji</a> <br>
-<a href="${context}/menu?operacja=list">Baza menu</a> <br>
-<a href="${context}/porcja?operacja=list">Baza porcji</a> <br>
-<a href="${context}/adres?operacja=list">Baza adresów</a> <br>
-<a href="${context}/adres?operacja=list">Baza adresów</a> <br>
-  </body>
+<head>
+    <title>Kebabownia - home</title>
+</head>
+<body>
+
+<h1>Home</h1>
+ble ble ble
+<br>
+<br>
+<a href="search.jsp">Wyszukiwarka</a>
+<br>
+<br>
+<a href="login.jsp">Zaloguj</a> się do systemu w celu edycji danych.
+
+</body>
 </html>

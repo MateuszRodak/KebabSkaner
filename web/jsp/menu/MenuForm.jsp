@@ -12,6 +12,7 @@
     <h1>Menu</h1>
     <div align="left">
         <a href="${context}">Home</a>
+    <a href="${context}/edit.jsp">Lista tabel</a>
     </div>
 
     <h2>
