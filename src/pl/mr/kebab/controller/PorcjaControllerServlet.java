@@ -57,7 +57,7 @@ public class PorcjaControllerServlet extends AbstractOwnerConrtollerServlet {
         String narrowId = request.getParameter("narrowId");
         Porcja existingPorcja = porcjaDAO.get(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/porcja/PorcjaForm.jsp");
-        request.setAttribute("idMenu", existingPorcja);
+        request.setAttribute("porcja", existingPorcja);
         request.setAttribute("narrowId", narrowId);
 
         //dodatkowo lista menu
@@ -83,8 +83,8 @@ public class PorcjaControllerServlet extends AbstractOwnerConrtollerServlet {
     protected void update(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         int idMenu = Integer.parseInt(request.getParameter("idMenu"));
-        int wielkosc = Integer.parseInt("wielkosc");
-        String jednostka = request.getParameter(request.getParameter("jednostka"));
+        int wielkosc = Integer.parseInt(request.getParameter("wielkosc"));
+        String jednostka = request.getParameter("jednostka");
         String opis = request.getParameter("opis");
         String narrowId = request.getParameter("narrowId");
 

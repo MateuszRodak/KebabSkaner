@@ -117,7 +117,8 @@ public class PorcjaDAO extends AbstractDAO {
         statement.setInt(1, porcja.getIdMenu());
         statement.setInt(2, porcja.getWielkosc());
         statement.setString(3, porcja.getJednostka());
-        statement.setString(3, porcja.getOpis());
+        statement.setString(4, porcja.getOpis());
+        statement.setInt(5, porcja.getId());
 
         boolean rowUpdated = statement.executeUpdate() > 0;
         statement.close();
