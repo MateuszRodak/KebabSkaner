@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
         if ((name.equals("owner") && password.equals("owner")) || (name.equals("guest") && password.equals("guest"))) {
             HttpSession session = request.getSession();
             session.setAttribute("name", name);
-            session.setAttribute("message", "Witaj " + name);
+            session.setAttribute("message", "Jesteś zalogowany jako " + name);
             if (name.equals("owner")) {
                 request.getRequestDispatcher("edit.jsp").include(request, response);
                 session.setAttribute("role", "owner");

@@ -16,6 +16,8 @@
     <div align="left">
         <a href="${context}">Home</a>
         <a href="${context}/edit.jsp">Lista tabel</a>
+        <br>
+        <c:out value="${message}"/>
     </div>
     <h2>
         <a href="${context}/porcja?operacja=new">Dodaj nową porcję</a>
