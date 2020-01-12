@@ -67,6 +67,12 @@
         <servlet-class>pl.mr.kebab.controller.ListaDodatkowControllerServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>DodatkiMenuControllerServlet</servlet-name>
+        <servlet-class>pl.mr.kebab.controller.DodatkiMenuControllerServlet</servlet-class>
+    </servlet>
+
+
 
     <servlet-mapping>
         <servlet-name>AdresControllerServlet</servlet-name>
@@ -98,6 +104,10 @@
         <url-pattern>/listaDodatkow/*</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>DodatkiMenuControllerServlet</servlet-name>
+        <url-pattern>/dodatkiMenu/*</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>

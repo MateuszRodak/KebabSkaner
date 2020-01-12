@@ -39,6 +39,33 @@ public class DodatkiMenuDAO extends AbstractDAO {
         return rowInserted;
     }
 
+    private List<DodatkiMenu> list(ResultSet resultSet) throws SQLException {
+        List<DodatkiMenu> listDodatkiMenu = new ArrayList<>();
+
+        while (resultSet.next()) {
+            int id = resultSet.getInt("ID");
+            int idMenu = resultSet.getInt("ID_MENU");
+            int idListyDodatkow = resultSet.getInt("ID_LISTY_DODATKOW");
+
+            DodatkiMenu dodatkiMenu = new DodatkiMenu(id, idMenu, idListyDodatkow);
+
+            //  dociągniecie danych restauracji
+            MenuDAO menuDAO = new MenuDAO(jdbcConnection);
+            Menu menu = menuDAO.get(idMenu);
+            dodatkiMenu.setMenu(menu);
+
+            ListaDodatkowDAO listaDodatkowDAO = new ListaDodatkowDAO(jdbcConnection);
+            ListaDodatkow listaDodatkow = listaDodatkowDAO.get(idListyDodatkow);
+            dodatkiMenu.setListaDodatkow(listaDodatkow);
+
+            listDodatkiMenu.add(dodatkiMenu);
+        }
+
+        resultSet.close();
+
+        return listDodatkiMenu;
+    }
+
     public List<DodatkiMenu> listAll() throws SQLException {
         List<DodatkiMenu> listDodatkiMenu = new ArrayList<>();
 
@@ -76,6 +103,22 @@ public class DodatkiMenuDAO extends AbstractDAO {
 
         return listDodatkiMenu;
     }
+    public List<DodatkiMenu> listForMenu(int idMenu) throws SQLException {
+        String sql = "SELECT * FROM OWNER.DODATKI_MENU WHERE ID_MENU = ?";
+
+        connect();
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setInt(1, idMenu);
+
+        ResultSet resultSet = statement.executeQuery();
+        List<DodatkiMenu> list = list(resultSet);
+
+        statement.close();
+        disconnect();
+
+        return list;
+    }
+
 
     public boolean delete(DodatkiMenu dodatkiMenu) throws SQLException {
         String sql = "DELETE FROM OWNER.DODATKI_MENU where ID = ?";

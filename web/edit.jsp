@@ -26,5 +26,6 @@
 <a href="${context}/porcja?operacja=list">Baza porcji</a> <br>
 <a href="${context}/platnosc?operacja=list">Baza platnosci</a> <br>
 <a href="${context}/listaDodatkow?operacja=list">Baza dodatkow</a> <br>
+<a href="${context}/dodatkiMenu?operacja=list">Baza dodatkowMenu</a> <br>
   </body>
 </html>
