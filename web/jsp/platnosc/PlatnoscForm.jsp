@@ -25,10 +25,12 @@
     <c:if test="${platnosc != null}">
     <form action="platnosc" method="post">
         <input type="hidden" name="operacja" value="update"/>
+        <input type="hidden" name="narrowId" value="${narrowId}"/>
         </c:if>
         <c:if test="${platnosc == null}">
         <form action="platnosc" method="post">
             <input type="hidden" name="operacja" value="insert"/>
+            <input type="hidden" name="narrowId" value="${narrowId}"/>
             </c:if>
             <table border="1" cellpadding="5">
                 <caption>
