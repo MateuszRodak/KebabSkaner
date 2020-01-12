@@ -37,11 +37,11 @@
             <th>ID_ListyDodatkow</th>
             <th></th>
         </tr>
-        <c:forEach var="DodatkiMenu" items="${listDodatkiMenu}">
+        <c:forEach var="dodatkiMenu" items="${listDodatkiMenu}">
             <tr>
                 <td><c:out value="${dodatkiMenu.id}"/></td>
                 <td><c:out value="${dodatkiMenu.idMenu}"/></td>
-                <td><c:out value="${dodatkiMenu.idListaDodatkow}"/></td>
+                <td><c:out value="${dodatkiMenu.idListyDodatkow}"/></td>
                 <td>
                     <a href="${context}/dodatkiMenu?operacja=delete&id=<c:out value='${dodatkiMenu.id}' />&narrowId=${narrowId}">Usuń</a>
                 </td>

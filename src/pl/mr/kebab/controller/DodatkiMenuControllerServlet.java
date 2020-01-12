@@ -41,7 +41,7 @@ public class DodatkiMenuControllerServlet extends AbstractOwnerConrtollerServlet
     }
 
     protected void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/DodatkiMenu/DodatkiMenuForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/dodatkiMenu/DodatkiMenuForm.jsp");
         String narrowId = request.getParameter("narrowId");
         request.setAttribute("narrowId", narrowId);
 
