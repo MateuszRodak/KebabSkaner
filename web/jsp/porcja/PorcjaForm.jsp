@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:set var="context" value="${pageContext.request.contextPath}"/>
-<c:set var="opisValues" value="<%=pl.mr.kebab.model.enums.OpisPorcja.values()%>"/>
-<c:set var="jednostkaValues" value="<%=pl.mr.kebab.model.enums.JednostkaPorcja.values()%>"/>
+<c:set var="opisEnums" value="<%=pl.mr.kebab.model.enums.OpisPorcja.values()%>"/>
+<c:set var="jednostkaEnums" value="<%=pl.mr.kebab.model.enums.JednostkaPorcja.values()%>"/>
 
 <html>
 <head>
@@ -79,9 +79,9 @@
                     <th>Jednostka:</th>
                     <td>
                         <select name="jednostka">
-                            <c:forEach items="${jednostkaValues}" var="jednostkaValue">
-                                <option value="${jednostkaValue.value}" <c:if test="${jednostkaValue eq porcja.jednostka}">selected="selected"</c:if>>
-                                        ${jednostkaValue.value}
+                            <c:forEach items="${jednostkaEnums}" var="jednostkaEnum">
+                                <option value="${jednostkaEnum.value}" <c:if test="${jednostkaEnum eq porcja.jednostka}">selected="selected"</c:if>>
+                                        ${jednostkaEnum.value}
                                 </option>
                             </c:forEach>
                         </select>
@@ -91,9 +91,9 @@
                     <th>Opis:</th>
                     <td>
                         <select name="opis">
-                            <c:forEach items="${opisValues}" var="opisValue">
-                                <option value="${opisValue.value}" <c:if test="${opisValue eq porcja.opis}">selected="selected"</c:if>>
-                                        ${opisValue.value}
+                            <c:forEach items="${opisEnums}" var="opisEnum">
+                                <option value="${opisEnum.value}" <c:if test="${opisEnum eq porcja.opis}">selected="selected"</c:if>>
+                                        ${opisEnum.value}
                                 </option>
                             </c:forEach>
                         </select>
