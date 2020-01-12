@@ -11,7 +11,7 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <html>
   <head>
-    <title>tytuł</title>
+    <title>Kebabownia - Edytowanie</title>
   </head>
   <body>
   <a href="logout">Logout</a> |
@@ -25,5 +25,6 @@
 <a href="${context}/menu?operacja=list">Baza menu</a> <br>
 <a href="${context}/porcja?operacja=list">Baza porcji</a> <br>
 <a href="${context}/platnosc?operacja=list">Baza platnosci</a> <br>
+<a href="${context}/listaDodatkow?operacja=list">Baza dodatkow</a> <br>
   </body>
 </html>

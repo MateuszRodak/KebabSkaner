@@ -62,6 +62,10 @@
         <servlet-class>pl.mr.kebab.controller.PlatnoscControllerServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ListaDodatkowControllerServlet</servlet-name>
+        <servlet-class>pl.mr.kebab.controller.ListaDodatkowControllerServlet</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -87,6 +91,11 @@
     <servlet-mapping>
         <servlet-name>PlatnoscControllerServlet</servlet-name>
         <url-pattern>/platnosc/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ListaDodatkowControllerServlet</servlet-name>
+        <url-pattern>/listaDodatkow/*</url-pattern>
     </servlet-mapping>
 
 

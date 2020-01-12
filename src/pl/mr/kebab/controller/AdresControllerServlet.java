@@ -68,8 +68,8 @@ public class AdresControllerServlet extends AbstractOwnerConrtollerServlet {
     protected void delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
 
-        Adres book = new Adres(id);
-        adresDAO.delete(book);
+        Adres adres = new Adres(id);
+        adresDAO.delete(adres);
         response.sendRedirect(request.getContextPath() + "/adres?operacja=list");
 
     }
