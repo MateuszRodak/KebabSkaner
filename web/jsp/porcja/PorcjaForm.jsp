@@ -45,11 +45,19 @@
                     <input type="hidden" name="id" value="<c:out value='${porcja.id}' />"/>
                 </c:if>
                 <tr>
-                    <th>ID_Menu:</th>
+                    <th>Porcja:</th>
                     <td>
-                        <input type="text" name="ID_Menu" size="45"
-                               value="<c:out value='${porcja.idMenu}' />"
-                        />
+                        <select name="idMenu">
+                            <c:forEach items="${listMenu}" var="menu">
+                                <option value="${menu.id}" <c:if test="${menu.id eq porcja.idMenu}">selected="selected"</c:if>>
+                                                ${menu.nazwaProduktu},
+                                                ${menu.restauracja.nazwa},
+                                                ${menu.restauracja.adres.miejscowosc},
+                                                ${menu.restauracja.adres.ulica},
+                                                ${menu.restauracja.adres.nrLokalu}
+                                </option>
+                            </c:forEach>
+                        </select>
                     </td>
                 </tr>
                 <tr>

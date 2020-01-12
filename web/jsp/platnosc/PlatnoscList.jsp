@@ -34,7 +34,6 @@
         <tr>
             <th>ID</th>
             <th>Restauracja</th>
-            <th>Produkt</th>
             <th>Rodzaj Platnosci</th>
             <th></th>
         </tr>
