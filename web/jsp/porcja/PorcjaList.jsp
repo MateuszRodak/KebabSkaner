@@ -46,8 +46,8 @@
                 <td><c:out value="${porcja.menu.restauracja.nazwa}"/>, <c:out value="${porcja.menu.restauracja.adres.miejscowosc}"/></td>
                 <td><c:out value="${porcja.menu.nazwaProduktu}"/></td>
                 <td><c:out value="${porcja.wielkosc}"/></td>
-                <td><c:out value="${porcja.jednostka}"/></td>
-                <td><c:out value="${porcja.opis}"/></td>
+                <td><c:out value="${porcja.jednostka.value}"/></td>
+                <td><c:out value="${porcja.opis.value}"/></td>
 
                 <td>
                     <a href="${context}/porcja?operacja=edit&id=<c:out value='${porcja.id}' />&narrowId=${narrowId}">Edytuj</a>

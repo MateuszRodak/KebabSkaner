@@ -2,6 +2,8 @@ package pl.mr.kebab.dao;
 
 import pl.mr.kebab.model.Porcja;
 import pl.mr.kebab.model.Menu;
+import pl.mr.kebab.model.enums.JednostkaPorcja;
+import pl.mr.kebab.model.enums.OpisPorcja;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,8 +32,8 @@ public class PorcjaDAO extends AbstractDAO {
         PreparedStatement statement = jdbcConnection.prepareStatement(sql);
         statement.setInt(1, porcja.getIdMenu());
         statement.setInt(2, porcja.getWielkosc());
-        statement.setString(3, porcja.getJednostka());
-        statement.setString(4, porcja.getOpis());
+        statement.setString(3, porcja.getJednostka().getValue());
+        statement.setString(4, porcja.getOpis().getValue());
 
         boolean rowInserted = statement.executeUpdate() > 0;
         statement.close();
@@ -77,8 +79,8 @@ public class PorcjaDAO extends AbstractDAO {
             int id = resultSet.getInt("ID");
             int idMenu = resultSet.getInt("ID_MENU");
             int wielkosc = resultSet.getInt("WIELKOSC");
-            String jednostka = resultSet.getString("JEDNOSTKA");
-            String opis = resultSet.getString("OPIS");
+            JednostkaPorcja jednostka = JednostkaPorcja.getEnum(resultSet.getString("JEDNOSTKA"));
+            OpisPorcja opis = OpisPorcja.getEnum(resultSet.getString("OPIS"));
 
             Porcja porcja = new Porcja(id, idMenu, wielkosc, jednostka, opis);
 
@@ -116,8 +118,8 @@ public class PorcjaDAO extends AbstractDAO {
         PreparedStatement statement = jdbcConnection.prepareStatement(sql);
         statement.setInt(1, porcja.getIdMenu());
         statement.setInt(2, porcja.getWielkosc());
-        statement.setString(3, porcja.getJednostka());
-        statement.setString(4, porcja.getOpis());
+        statement.setString(3, porcja.getJednostka().getValue());
+        statement.setString(4, porcja.getOpis().getValue());
         statement.setInt(5, porcja.getId());
 
         boolean rowUpdated = statement.executeUpdate() > 0;
@@ -140,8 +142,8 @@ public class PorcjaDAO extends AbstractDAO {
         if (resultSet.next()) {
             int idMenu = resultSet.getInt("ID_MENU");
             int wielkosc = resultSet.getInt("WIELKOSC");
-            String jednostka = resultSet.getString("JEDNOSTKA");
-            String opis = resultSet.getString("OPIS");
+            JednostkaPorcja jednostka = JednostkaPorcja.getEnum(resultSet.getString("JEDNOSTKA"));
+            OpisPorcja opis = OpisPorcja.getEnum(resultSet.getString("OPIS"));
 
             porcja = new Porcja(id, idMenu, wielkosc, jednostka, opis);
 

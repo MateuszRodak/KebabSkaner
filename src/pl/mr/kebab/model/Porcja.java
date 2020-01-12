@@ -1,12 +1,15 @@
 package pl.mr.kebab.model;
 
+import pl.mr.kebab.model.enums.JednostkaPorcja;
+import pl.mr.kebab.model.enums.OpisPorcja;
+
 public class Porcja {
 
     private int id;
     private int idMenu;
     private int wielkosc;
-    private String jednostka;
-    private String opis;
+    private JednostkaPorcja jednostka;
+    private OpisPorcja opis;
 
     private Menu menu;
 
@@ -17,14 +20,14 @@ public class Porcja {
         this.id = id;
     }
 
-    public Porcja(int idMenu, int wielkosc, String jednostka, String opis) {
+    public Porcja(int idMenu, int wielkosc, JednostkaPorcja jednostka, OpisPorcja opis) {
         this.idMenu = idMenu;
         this.wielkosc = wielkosc;
         this.jednostka = jednostka;
         this.opis = opis;
     }
 
-    public Porcja(int id, int idMenu, int wielkosc, String jednostka, String opis) {
+    public Porcja(int id, int idMenu, int wielkosc, JednostkaPorcja jednostka, OpisPorcja opis) {
         this.id = id;
         this.idMenu = idMenu;
         this.wielkosc = wielkosc;
@@ -56,19 +59,19 @@ public class Porcja {
         this.wielkosc = wielkosc;
     }
 
-    public String getJednostka() {
+    public JednostkaPorcja getJednostka() {
         return jednostka;
     }
 
-    public void setJednostka(String jednostka) {
+    public void setJednostka(JednostkaPorcja jednostka) {
         this.jednostka = jednostka;
     }
 
-    public String getOpis() {
+    public OpisPorcja getOpis() {
         return opis;
     }
 
-    public void setOpis(String opis) {
+    public void setOpis(OpisPorcja opis) {
         this.opis = opis;
     }
 

@@ -4,6 +4,8 @@ import pl.mr.kebab.dao.PorcjaDAO;
 import pl.mr.kebab.dao.MenuDAO;
 import pl.mr.kebab.model.Menu;
 import pl.mr.kebab.model.Porcja;
+import pl.mr.kebab.model.enums.JednostkaPorcja;
+import pl.mr.kebab.model.enums.OpisPorcja;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -71,8 +73,8 @@ public class PorcjaControllerServlet extends AbstractOwnerConrtollerServlet {
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int idMenu = Integer.parseInt(request.getParameter("idMenu"));
         int wielkosc = Integer.parseInt(request.getParameter("wielkosc"));
-        String jednostka = request.getParameter("jednostka");
-        String opis = request.getParameter("opis");
+        JednostkaPorcja jednostka = JednostkaPorcja.getEnum(request.getParameter("jednostka"));
+        OpisPorcja opis = OpisPorcja.getEnum(request.getParameter("opis"));
         String narrowId = request.getParameter("narrowId");
 
         Porcja newPorcja = new Porcja(idMenu, wielkosc, jednostka, opis);
@@ -84,8 +86,8 @@ public class PorcjaControllerServlet extends AbstractOwnerConrtollerServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         int idMenu = Integer.parseInt(request.getParameter("idMenu"));
         int wielkosc = Integer.parseInt(request.getParameter("wielkosc"));
-        String jednostka = request.getParameter("jednostka");
-        String opis = request.getParameter("opis");
+        JednostkaPorcja jednostka = JednostkaPorcja.getEnum(request.getParameter("jednostka"));
+        OpisPorcja opis = OpisPorcja.getEnum(request.getParameter("opis"));
         String narrowId = request.getParameter("narrowId");
 
         Porcja porcja = new Porcja(id, idMenu, wielkosc, jednostka, opis);

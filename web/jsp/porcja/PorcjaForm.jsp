@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <c:set var="context" value="${pageContext.request.contextPath}"/>
+<c:set var="opisValues" value="<%=pl.mr.kebab.model.enums.OpisPorcja.values()%>"/>
+<c:set var="jednostkaValues" value="<%=pl.mr.kebab.model.enums.JednostkaPorcja.values()%>"/>
 
 <html>
 <head>
@@ -73,28 +76,24 @@
                 <tr>
                     <th>Jednostka:</th>
                     <td>
-                        <input type="text" name="jednostka" size="5"
-                               value="<c:out value='${porcja.jednostka}' />"
-                        />
+                        <select name="jednostka">
+                            <c:forEach items="${jednostkaValues}" var="jednostkaValue">
+                                <option value="${jednostkaValue.value}" <c:if test="${jednostkaValue eq porcja.jednostka}">selected="selected"</c:if>>
+                                        ${jednostkaValue.value}
+                                </option>
+                            </c:forEach>
+                        </select>
                     </td>
                 </tr>
-               <%-- <tr>
-                    <th>Opis:</th>
-                    <td>
-                        <input type="text" name="opis" size="10"
-                               value="<c:out value='${porcja.opis}' />"
-                        />
-                    </td>
-                </tr>--%>
                 <tr>
                     <th>Opis:</th>
                     <td>
                         <select name="opis">
-                            <option value="mały">mały</option>
-                            <option value="średni">średni</option>
-                            <option value="duży">duży</option>
-                            <option value="b.duży">b.duży</option>
-                            <option value="wielki">wielki</option>
+                            <c:forEach items="${opisValues}" var="opisValue">
+                                <option value="${opisValue.value}" <c:if test="${opisValue eq porcja.opis}">selected="selected"</c:if>>
+                                        ${opisValue.value}
+                                </option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
