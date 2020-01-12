@@ -49,7 +49,7 @@
                     <td>
                         <select name="idMenu">
                             <c:forEach items="${listMenu}" var="menu">
-                                <option value="${menu.id}" <c:if test="${menu.id eq porcja.idMenu}">selected="selected"</c:if>>
+                                <option value="${menu.id}" <c:if test="${menu.id eq porcja.idMenu }">selected="selected"</c:if>>
                                                 ${menu.nazwaProduktu},
                                                 ${menu.restauracja.nazwa},
                                                 ${menu.restauracja.adres.miejscowosc},
@@ -76,12 +76,24 @@
                         />
                     </td>
                 </tr>
-                <tr>
+               <%-- <tr>
                     <th>Opis:</th>
                     <td>
                         <input type="text" name="opis" size="10"
                                value="<c:out value='${porcja.opis}' />"
                         />
+                    </td>
+                </tr>--%>
+                <tr>
+                    <th>Opis:</th>
+                    <td>
+                        <select name="opis">
+                            <option value="mały">mały</option>
+                            <option value="średni">średni</option>
+                            <option value="duży">duży</option>
+                            <option value="b.duży">b.duży</option>
+                            <option value="wielki">wielki</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>

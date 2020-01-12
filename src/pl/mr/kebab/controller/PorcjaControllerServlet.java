@@ -70,8 +70,8 @@ public class PorcjaControllerServlet extends AbstractOwnerConrtollerServlet {
 
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int idMenu = Integer.parseInt(request.getParameter("idMenu"));
-        int wielkosc = Integer.parseInt("wielkosc");
-        String jednostka = request.getParameter(request.getParameter("jednostka"));
+        int wielkosc = Integer.parseInt(request.getParameter("wielkosc"));
+        String jednostka = request.getParameter("jednostka");
         String opis = request.getParameter("opis");
         String narrowId = request.getParameter("narrowId");
 
