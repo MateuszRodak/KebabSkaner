@@ -69,7 +69,7 @@
                     <td>
                         <select name="idListyDodatkow">
                             <c:forEach items="${listListaDodatkow}" var="listaDodatkow">
-                                <option value="${listaDodatkow.id}" <c:if test="${listaDodatkow.id eq DodatkiMenu.idListyDodatkow}">selected="selected"</c:if>>
+                                <option value="${listaDodatkow.id}" <c:if test="${listaDodatkow.id eq dodatkiMenu.idListyDodatkow}">selected="selected"</c:if>>
                                         ${listaDodatkow.nazwa}
                                 </option>
                             </c:forEach>
