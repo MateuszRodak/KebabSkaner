@@ -12,6 +12,7 @@
 <html>
   <head>
     <title>Kebabownia - Edytowanie</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   </head>
   <body>
   <a href="logout">Logout</a> |
@@ -24,8 +25,8 @@
 <a href="${context}/restauracja?operacja=list">Baza restauracji</a> <br>
 <a href="${context}/menu?operacja=list">Baza menu</a> <br>
 <a href="${context}/porcja?operacja=list">Baza porcji</a> <br>
-<a href="${context}/platnosc?operacja=list">Baza platnosci</a> <br>
-<a href="${context}/listaDodatkow?operacja=list">Baza dodatkow</a> <br>
-<a href="${context}/dodatkiMenu?operacja=list">Baza dodatkowMenu</a> <br>
+<a href="${context}/platnosc?operacja=list">Baza płatności</a> <br>
+<a href="${context}/listaDodatkow?operacja=list">Słownik dodatków</a> <br>
+<a href="${context}/dodatkiMenu?operacja=list">Dodatki do menu</a> <br>
   </body>
 </html>

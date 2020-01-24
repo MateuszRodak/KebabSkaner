@@ -11,12 +11,12 @@
 
 <html>
 <head>
-    <title>Kebabownia - Platnosc</title>
+    <title>Kebabownia - Płatność</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <center>
-    <h1>Platnosc</h1>
+    <h1>Płatność</h1>
     <div align="left">
         <a href="${context}">Home</a>
         <a href="${context}/edit.jsp">Lista tabel</a>
@@ -24,9 +24,9 @@
         <c:out value="${message}"/>
     </div>
     <h2>
-        <a href="${context}/platnosc?operacja=new&narrowId=${narrowId}">Dodaj nową platnosc</a>
+        <a href="${context}/platnosc?operacja=new&narrowId=${narrowId}">Dodaj nową płatność</a>
         &nbsp;&nbsp;&nbsp;
-        <a href="${context}/platnosc?operacja=list&narrowId=${narrowId}">Lista platnosci</a>
+        <a href="${context}/platnosc?operacja=list&narrowId=${narrowId}">Lista płatności</a>
 
     </h2>
 </center>
@@ -36,7 +36,7 @@
         <tr>
             <th>ID</th>
             <th>Restauracja</th>
-            <th>Rodzaj Platnosci</th>
+            <th>Rodzaj Płatności</th>
             <th></th>
         </tr>
         <c:forEach var="platnosc" items="${listPlatnosc}">

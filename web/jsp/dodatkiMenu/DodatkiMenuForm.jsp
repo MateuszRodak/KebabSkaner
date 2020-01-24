@@ -4,12 +4,12 @@
 
 <html>
 <head>
-    <title>Kebabownia - dodatkiMenu</title>
+    <title>Kebabownia - dodatki do menu</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <center>
-    <h1>DodatkiMenu</h1>
+    <h1>Dodatki do menu</h1>
     <div align="left">
         <a href="${context}">Home</a>
         <a href="${context}/edit.jsp">Lista tabel</a>
@@ -17,9 +17,9 @@
         <c:out value="${message}"/>
     </div>
     <h2>
-        <a href="${context}/dodatkiMenu?operacja=new">Dodaj nowy dodatekdo produktu</a>
+        <a href="${context}/dodatkiMenu?operacja=new">Dodaj nowy dodatek do menu</a>
         &nbsp;&nbsp;&nbsp;
-        <a href="${context}/dodatkiMenu?operacja=list">Lista dodatkow do produktu</a>
+        <a href="${context}/dodatkiMenu?operacja=list">Lista dodatkow do menu</a>
 
     </h2>
 </center>
@@ -79,7 +79,7 @@
 
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" value="Save"/>
+                        <input type="submit" value="Zapisz"/>
                     </td>
                 </tr>
             </table>

@@ -49,7 +49,7 @@
                 <td><c:out value="${restauracja.adres.miejscowosc}"/>, <c:out value="${restauracja.adres.ulica}"/> <c:out value="${restauracja.adres.nrLokalu}"/></td>
                 <td><c:out value="${restauracja.godzOtw}"/></td>
                 <td><c:out value="${restauracja.godzZam}"/></td>
-                <td><c:out value="${restauracja.dowoz}"/></td>
+                <td><c:if test="${restauracja.dowoz}">Tak</c:if><c:if test="${!restauracja.dowoz}">Nie</c:if></td>
                 <td>
                     <a href="${context}/restauracja?operacja=edit&id=<c:out value='${restauracja.id}' />">Edytuj</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;

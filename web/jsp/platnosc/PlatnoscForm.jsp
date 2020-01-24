@@ -4,12 +4,12 @@
 
 <html>
 <head>
-    <title>Kebabownia - platnosc</title>
+    <title>Kebabownia - płatność</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <center>
-    <h1>Platnosc</h1>
+    <h1>Płatność</h1>
     <div align="left">
         <a href="${context}">Home</a>
         <a href="${context}/edit.jsp">Lista tabel</a>
@@ -17,9 +17,9 @@
         <c:out value="${message}"/>
     </div>
     <h2>
-        <a href="${context}/platnosc?operacja=new">Dodaj nową platnosc</a>
+        <a href="${context}/platnosc?operacja=new">Dodaj nową płatność</a>
         &nbsp;&nbsp;&nbsp;
-        <a href="${context}/platnosc?operacja=list">Lista platnosci</a>
+        <a href="${context}/platnosc?operacja=list">Lista płatności</a>
 
     </h2>
 </center>
@@ -38,10 +38,10 @@
                 <caption>
                     <h2>
                         <c:if test="${platnosc != null}">
-                            Edytuj platnosc
+                            Edytuj płatność
                         </c:if>
                         <c:if test="${platnosc == null}">
-                            Dodaj nowa platnosc
+                            Dodaj nową płatność
                         </c:if>
                     </h2>
                 </caption>
@@ -61,7 +61,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>RodzajPlatnosci:</th>
+                    <th>Rodzaj płatności:</th>
                     <td>
                         <input type="text" name="rodzajPlatnosci" size="45"
                                value="<c:out value='${platnosc.rodzajPlatnosci}' />"
@@ -71,7 +71,7 @@
 
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" value="Save"/>
+                        <input type="submit" value="Zapisz"/>
                     </td>
                 </tr>
             </table>

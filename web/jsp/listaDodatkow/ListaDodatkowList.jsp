@@ -11,12 +11,12 @@
 
 <html>
 <head>
-    <title>Kebabownia - ListaDodatkow</title>
+    <title>Kebabownia - Baza słownikowa dodatków</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <center>
-    <h1>ListaDodatkow</h1>
+    <h1>Baza słownikowa dodatków</h1>
     <div align="left">
         <a href="${context}">Home</a>
         <a href="${context}/edit.jsp">Lista tabel</a>
@@ -24,9 +24,9 @@
         <c:out value="${message}"/>
     </div>
     <h2>
-        <a href="${context}/listaDodatkow?operacja=new&narrowId=${narrowId}">Dodaj nowy dodatek</a>
+        <a href="${context}/listaDodatkow?operacja=new&narrowId=${narrowId}">Dodaj nowy dodatek do słownika</a>
         &nbsp;&nbsp;&nbsp;
-        <a href="${context}/listaDodatkow?operacja=list&narrowId=${narrowId}">Lista dodatkow</a>
+        <a href="${context}/listaDodatkow?operacja=list&narrowId=${narrowId}">Słownik dodatków</a>
 
     </h2>
 </center>

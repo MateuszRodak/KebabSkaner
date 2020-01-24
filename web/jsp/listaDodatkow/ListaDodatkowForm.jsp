@@ -4,20 +4,20 @@
 
 <html>
 <head>
-    <title>Kebabownia - listaDodatkow</title>
+    <title>Kebabownia - Baza słownikowa dodatków</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <center>
-    <h1>ListaDodatkow</h1>
+    <h1>Baza słownikowa dodatków</h1>
     <div align="left">
         <a href="${context}">Home</a>
         <a href="${context}/edit.jsp">Lista tabel</a>
     </div>
     <h2>
-        <a href="${context}/listaDodatkow?operacja=new">Dodaj nowy dodatek</a>
+        <a href="${context}/listaDodatkow?operacja=new">Dodaj nowy dodatek do słownika</a>
         &nbsp;&nbsp;&nbsp;
-        <a href="${context}/listaDodatkow?operacja=list">Lista dodatkow</a>
+        <a href="${context}/listaDodatkow?operacja=list">Słownik dodatków</a>
 
     </h2>
 </center>
@@ -36,10 +36,10 @@
                 <caption>
                     <h2>
                         <c:if test="${listaDodatkow != null}">
-                            Edytuj listaDodatkow
+                            Edytuj dodatek
                         </c:if>
                         <c:if test="${listaDodatkow == null}">
-                            Dodaj nowa listaDodatkow
+                            Dodaj nowy dodatek
                         </c:if>
                     </h2>
                 </caption>
@@ -57,7 +57,7 @@
 
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" value="Save"/>
+                        <input type="submit" value="Zapisz"/>
                     </td>
                 </tr>
             </table>

@@ -101,7 +101,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" value="Save"/>
+                        <input type="submit" value="Zapisz"/>
                     </td>
                 </tr>
             </table>

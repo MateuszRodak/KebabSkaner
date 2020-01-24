@@ -70,7 +70,7 @@
                 <tr>
                     <th>Cena:</th>
                     <td>
-                        <input type="text" name="cena" size="15" value="<c:out value='${menu.cena}' />"/>
+                        <input type="text" name="cena" size="15" value="<c:out value='${menu.cena}' />"/> PLN
                     </td>
                 </tr>
                 <tr>

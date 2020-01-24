@@ -47,7 +47,7 @@
                     <input type="hidden" name="id" value="<c:out value='${adres.id}' />"/>
                 </c:if>
                 <tr>
-                    <th>Miejscowośc:</th>
+                    <th>Miejscowość:</th>
                     <td>
                         <input type="text" name="miejscowosc" size="45"
                                value="<c:out value='${adres.miejscowosc}' />"
@@ -80,7 +80,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" value="Save"/>
+                        <input type="submit" value="Zapisz"/>
                     </td>
                 </tr>
             </table>

@@ -11,12 +11,12 @@
 
 <html>
 <head>
-    <title>Kebabownia - DodatkiMenu</title>
+    <title>Kebabownia - Dodatki do menu</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <center>
-    <h1>DodatkiMenu</h1>
+    <h1>Dodatki do menu</h1>
     <div align="left">
         <a href="${context}">Home</a>
         <a href="${context}/edit.jsp">Lista tabel</a>
@@ -24,9 +24,9 @@
         <c:out value="${message}"/>
     </div>
     <h2>
-        <a href="${context}/dodatkiMenu?operacja=new&narrowId=${narrowId}">Dodaj nowy dodatek</a>
+        <a href="${context}/dodatkiMenu?operacja=new&narrowId=${narrowId}">Dodaj nowy dodatek do pozycji menu</a>
         &nbsp;&nbsp;&nbsp;
-        <a href="${context}/dodatkiMenu?operacja=list&narrowId=${narrowId}">Lista dodatkow</a>
+        <a href="${context}/dodatkiMenu?operacja=list&narrowId=${narrowId}">Lista dodatków do menu</a>
 
     </h2>
 </center>

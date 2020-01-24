@@ -37,7 +37,7 @@
             <th>ID</th>
             <th>Restauracja</th>
             <th>Nazwa produktu</th>
-            <th>Cena</th>
+            <th>Cena PLN</th>
             <th></th>
         </tr>
         <c:forEach var="menu" items="${listMenu}">

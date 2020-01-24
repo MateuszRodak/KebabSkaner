@@ -37,7 +37,7 @@
             <th>ID</th>
             <th>Restauracja</th>
             <th>Produkt</th>
-            <th>Wielkosc</th>
+            <th>Wielkość</th>
             <th>Jednostka</th>
             <th>Opis</th>
             <th></th>
