@@ -17,7 +17,7 @@
         <c:out value="${message}"/>
     </div>
     <h2>
-        <a href="${context}/dodatkiMenu?operacja=new">Dodaj nowy dodatek do menu</a>
+        <a href="${context}/dodatkiMenu?operacja=new">Dodaj nowy dodatek do pozycji menu</a>
         &nbsp;&nbsp;&nbsp;
         <a href="${context}/dodatkiMenu?operacja=list">Lista dodatkow do menu</a>
 
@@ -41,7 +41,7 @@
                             Edytuj dodatkiMenu
                         </c:if>
                         <c:if test="${dodatkiMenu == null}">
-                            Dodaj nowa dodatkiMenu
+                            Dodaj nowy dodatek do pozycji menu
                         </c:if>
                     </h2>
                 </caption>

@@ -44,7 +44,7 @@
                             Edytuj porcje
                         </c:if>
                         <c:if test="${porcja == null}">
-                            Dodaj nowa porcja
+                            Dodaj nową porcję
                         </c:if>
                     </h2>
                 </caption>
