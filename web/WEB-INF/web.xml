@@ -72,6 +72,11 @@
         <servlet-class>pl.mr.kebab.controller.DodatkiMenuControllerServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>WyszukajMenuControllerServlet</servlet-name>
+        <servlet-class>pl.mr.kebab.controller.SzukajMenuControllerServlet</servlet-class>
+    </servlet>
+
 
 
     <servlet-mapping>
@@ -107,6 +112,11 @@
     <servlet-mapping>
         <servlet-name>DodatkiMenuControllerServlet</servlet-name>
         <url-pattern>/dodatkiMenu/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>WyszukajMenuControllerServlet</servlet-name>
+        <url-pattern>/szukajMenu/*</url-pattern>
     </servlet-mapping>
 
 

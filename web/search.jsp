@@ -1,5 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<c:set var="context" value="${pageContext.request.contextPath}" />
 szukaj
+<br>
+<br>
+<a href="${context}/szukajMenu?operacja=list">Wyszukaj menu</a> <br>
+<br>
+<br>
 <br>
 <br>
 <a href="edit.jsp">włamanie</a> - gdyby ktoś wszedł z linku do edycji.

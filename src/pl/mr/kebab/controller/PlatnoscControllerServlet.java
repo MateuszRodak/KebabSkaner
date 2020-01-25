@@ -92,4 +92,9 @@ public class PlatnoscControllerServlet extends AbstractOwnerConrtollerServlet {
         platnoscDAO.delete(platnosc);
         response.sendRedirect(request.getContextPath() + "/platnosc?operacja=list&narrowId=" + narrowId);
     }
+
+    @Override
+    protected void search(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+
+    }
 }

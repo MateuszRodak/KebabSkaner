@@ -73,4 +73,9 @@ public class AdresControllerServlet extends AbstractOwnerConrtollerServlet {
         response.sendRedirect(request.getContextPath() + "/adres?operacja=list");
 
     }
+
+    @Override
+    protected void search(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+
+    }
 }

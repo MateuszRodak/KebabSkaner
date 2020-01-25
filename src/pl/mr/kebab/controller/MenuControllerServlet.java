@@ -100,4 +100,9 @@ public class MenuControllerServlet extends AbstractOwnerConrtollerServlet {
 
     }
 
+    @Override
+    protected void search(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+
+    }
+
 }

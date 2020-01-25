@@ -65,4 +65,9 @@ public class ListaDodatkowControllerServlet extends AbstractOwnerConrtollerServl
         listaDodatkowDAO.delete(listaDodatkow);
         response.sendRedirect(request.getContextPath() + "/listaDodatkow?operacja=list");
     }
+
+    @Override
+    protected void search(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+
+    }
 }

@@ -90,4 +90,9 @@ public class RestauracjaControllerServlet extends AbstractOwnerConrtollerServlet
         response.sendRedirect(request.getContextPath() + "/restauracja?operacja=list");
 
     }
+
+    @Override
+    protected void search(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+
+    }
 }

@@ -104,4 +104,9 @@ public class PorcjaControllerServlet extends AbstractOwnerConrtollerServlet {
         response.sendRedirect(request.getContextPath() + "/porcja?operacja=list&narrowId=" + narrowId);
     }
 
+    @Override
+    protected void search(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+
+    }
+
 }

@@ -69,6 +69,9 @@ public abstract class AbstractOwnerConrtollerServlet extends HttpServlet {
                 case "list":
                     list(request, response);
                     break;
+                case "search":
+                    search(request, response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -86,6 +89,8 @@ public abstract class AbstractOwnerConrtollerServlet extends HttpServlet {
     protected abstract void update(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException;
 
     protected abstract void delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException;
+
+    protected abstract void search(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException;
 
     protected abstract void setConnectionProperies();
 }

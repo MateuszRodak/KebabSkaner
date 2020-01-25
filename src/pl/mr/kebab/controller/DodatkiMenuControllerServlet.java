@@ -99,4 +99,9 @@ public class DodatkiMenuControllerServlet extends AbstractOwnerConrtollerServlet
         dodatkiMenuDAO.delete(dodatkiMenu);
         response.sendRedirect(request.getContextPath() + "/dodatkiMenu?operacja=list&narrowId=" + narrowId);
     }
+
+    @Override
+    protected void search(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+
+    }
 }
