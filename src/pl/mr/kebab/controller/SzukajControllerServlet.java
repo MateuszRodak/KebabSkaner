@@ -2,6 +2,7 @@ package pl.mr.kebab.controller;
 
 import pl.mr.kebab.dao.MenuDAO;
 import pl.mr.kebab.model.Menu;
+import pl.mr.kebab.model.Restauracja;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,21 +30,32 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
 
     @Override
     protected void search(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        String clicked = (request.getParameter("clicked"));
         String nazwaProduktu = request.getParameter("nazwaProduktu");
         String cena = (request.getParameter("cena"));
+        String dowoz = (request.getParameter("dowoz"));
 
-        Menu menu = new Menu();
-        if (nazwaProduktu != null && !nazwaProduktu.equals("")) {
-            menu.setNazwaProduktu(nazwaProduktu);
+        if (clicked != null && !clicked.equals("")) {
+            Menu menu = new Menu();
+            if (nazwaProduktu != null && !nazwaProduktu.equals("")) {
+                menu.setNazwaProduktu(nazwaProduktu);
+            }
+            if (cena != null && !cena.equals("") && !cena.equals("0.0")) {
+                menu.setCena(Float.parseFloat(cena));
+            }
+
+            if (dowoz != null && !dowoz.equals("")) {
+                Restauracja restauracja = new Restauracja();
+                restauracja.setDowoz(Boolean.parseBoolean(dowoz));
+                menu.setRestauracja(restauracja);
+            }
+
+            List<Menu> list = menuDAO.search(menu);
+            request.setAttribute("listMenu", list);
+
+            request.setAttribute("menu", menu);
         }
-        if (cena != null && !cena.equals("")) {
-            menu.setCena(Float.parseFloat(cena));
-        }
 
-        List<Menu> list = menuDAO.search(menu);
-
-        request.setAttribute("listMenu", list);
-        request.setAttribute("menu", menu);
         RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/szukaj/Szukaj.jsp");
         dispatcher.forward(request, response);
     }

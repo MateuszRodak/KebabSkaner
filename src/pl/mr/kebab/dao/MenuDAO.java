@@ -70,9 +70,15 @@ public class MenuDAO extends AbstractDAO {
     }
 
     public List<Menu> search(Menu menu) throws SQLException {
-        String sql = "SELECT * FROM OWNER.MENU WHERE 1=1";
+        String sql;
         connect();
-        PreparedStatement statement = null;
+        PreparedStatement statement;
+
+        if (menu.getRestauracja()!= null && menu.getRestauracja().isDowoz()) {
+            sql = "SELECT * FROM OWNER.MENU, OWNER.RESTAURACJA WHERE MENU.ID_REST=RESTAURACJA.ID and RESTAURACJA.DOWOZ = true";
+        } else {
+            sql = "SELECT * FROM OWNER.MENU WHERE 1=1";
+        }
 
         if (menu.getNazwaProduktu() != null && menu.getCena() == 0.0f) {
 
@@ -98,7 +104,6 @@ public class MenuDAO extends AbstractDAO {
             statement.setFloat(2, menu.getCena());
 
         } else {
-            sql += " and 1=2";
             statement = jdbcConnection.prepareStatement(sql);
         }
 

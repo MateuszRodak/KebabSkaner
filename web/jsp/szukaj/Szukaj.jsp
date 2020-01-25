@@ -33,6 +33,7 @@
 
         <form action="szukaj" method="post">
             <input type="hidden" name="operacja" value="search"/>
+            <input type="hidden" name="clicked" value="true"/>
 
             <table border="1" cellpadding="5">
                 <caption>
@@ -42,15 +43,19 @@
                 </caption>
 
                 <tr>
-                    <th>Nazwa produktu:</th>
                     <td>
-                        <input type="text" name="nazwaProduktu" size="45" value="<c:out value='${menu.nazwaProduktu}' />"/>
+                        Nazwa produktu: <input type="text" name="nazwaProduktu" size="10" value="<c:out value='${menu.nazwaProduktu}' />"/>
+                    </td>
+                    <td>
+                        Dowóz: <input type="checkbox" name="dowoz" value="true" <c:if test="${menu.restauracja.dowoz==true}">checked=checked</c:if>>
                     </td>
                 </tr>
                 <tr>
-                    <th>Cena do:</th>
                     <td>
-                        <input type="text" name="cena" size="15" value="<c:out value='${menu.cena}' />"/> PLN
+                        Cena do: <input type="text" name="cena" size="5" value="<c:out value='${menu.cena}' />"/> PLN
+                    </td>
+                    <td>
+                        x
                     </td>
                 </tr>
                 <tr>
@@ -69,6 +74,7 @@
             <th>Restauracja</th>
             <th>Nazwa produktu</th>
             <th>Cena PLN</th>
+            <th>Dowóz</th>
             <th>Płatność</th>
         </tr>
         <c:forEach var="menuL" items="${listMenu}">
@@ -77,6 +83,7 @@
                 <td><c:out value="${menuL.restauracja.nazwa}"/>, <c:out value="${menuL.restauracja.adres.miejscowosc}"/></td>
                 <td><c:out value="${menuL.nazwaProduktu}"/></td>
                 <td><c:out value="${menuL.cena}"/></td>
+                <td><c:if test="${menuL.restauracja.dowoz}">Tak</c:if><c:if test="${!menuL.restauracja.dowoz}">Nie</c:if></td>
                 <td>
                     <c:forEach items="${menuL.restauracja.platnoscList}" var="elementPlatnosc">
                         ${elementPlatnosc.rodzajPlatnosci},
