@@ -6,6 +6,7 @@ szukaj
 <br>
 <br>
 <a href="${context}/szukajMenu?operacja=list">Wyszukaj menu</a> <br>
+<a href="${context}/szukaj?operacja=list">Wyszukaj menu ze szczegółami</a> <br>
 <br>
 <br>
 <br>

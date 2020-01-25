@@ -45,7 +45,7 @@ public class PlatnoscDAO extends AbstractDAO {
         Statement statement = jdbcConnection.createStatement();
 
         ResultSet resultSet = statement.executeQuery(sql);
-        List<Platnosc> list = list(resultSet);
+        List<Platnosc> list = list(resultSet, true);
 
         statement.close();
         disconnect();
@@ -61,7 +61,7 @@ public class PlatnoscDAO extends AbstractDAO {
         statement.setInt(1, idRest);
 
         ResultSet resultSet = statement.executeQuery();
-        List<Platnosc> list = list(resultSet);
+        List<Platnosc> list = list(resultSet, true);
 
         statement.close();
         disconnect();
@@ -69,7 +69,21 @@ public class PlatnoscDAO extends AbstractDAO {
         return list;
     }
 
-    private List<Platnosc> list(ResultSet resultSet) throws SQLException {
+    public List<Platnosc> simpleListForRestauracja(int idRest) throws SQLException {
+        String sql = "SELECT * FROM OWNER.PLATNOSC WHERE ID_REST = ?";
+
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setInt(1, idRest);
+
+        ResultSet resultSet = statement.executeQuery();
+        List<Platnosc> list = list(resultSet, false);
+
+        statement.close();
+
+        return list;
+    }
+
+    private List<Platnosc> list(ResultSet resultSet, boolean withDependencies) throws SQLException {
         List<Platnosc> listPlatnosc = new ArrayList<>();
 
         while (resultSet.next()) {
@@ -79,10 +93,12 @@ public class PlatnoscDAO extends AbstractDAO {
 
             Platnosc platnosc = new Platnosc(id, idRest, rodzajPlatnosci);
 
-            //  dociągniecie danych restauracji
-            RestauracjaDAO restauracjaDAO = new RestauracjaDAO(jdbcConnection);
-            Restauracja restauracja = restauracjaDAO.get(idRest);
-            platnosc.setRestauracja(restauracja);
+            if (withDependencies) {
+                //  dociągniecie danych restauracji
+                RestauracjaDAO restauracjaDAO = new RestauracjaDAO(jdbcConnection);
+                Restauracja restauracja = restauracjaDAO.get(idRest);
+                platnosc.setRestauracja(restauracja);
+            }
 
             listPlatnosc.add(platnosc);
         }
@@ -105,7 +121,6 @@ public class PlatnoscDAO extends AbstractDAO {
         disconnect();
         return rowDeleted;
     }
-
 
     public Platnosc get(int id) throws SQLException {
         Platnosc platnosc = null;

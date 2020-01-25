@@ -1,6 +1,7 @@
 package pl.mr.kebab.dao;
 
 import pl.mr.kebab.model.Adres;
+import pl.mr.kebab.model.Platnosc;
 import pl.mr.kebab.model.Restauracja;
 
 import java.sql.Connection;
@@ -133,6 +134,11 @@ public class RestauracjaDAO extends AbstractDAO {
             AdresDAO adresDAO = new AdresDAO(jdbcConnection);
             Adres adres = adresDAO.get(idAdres);
             restauracja.setAdres(adres);
+
+            //dociagniecie platnosci
+            PlatnoscDAO platnoscDAO = new PlatnoscDAO(jdbcConnection);
+            List<Platnosc> listPlatnosc = platnoscDAO.simpleListForRestauracja(id);
+            restauracja.setPlatnoscList(listPlatnosc);
         }
 
         resultSet.close();

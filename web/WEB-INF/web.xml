@@ -77,6 +77,11 @@
         <servlet-class>pl.mr.kebab.controller.SzukajMenuControllerServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>WyszukajControllerServlet</servlet-name>
+        <servlet-class>pl.mr.kebab.controller.SzukajControllerServlet</servlet-class>
+    </servlet>
+
 
 
     <servlet-mapping>
@@ -117,6 +122,11 @@
     <servlet-mapping>
         <servlet-name>WyszukajMenuControllerServlet</servlet-name>
         <url-pattern>/szukajMenu/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>WyszukajControllerServlet</servlet-name>
+        <url-pattern>/szukaj/*</url-pattern>
     </servlet-mapping>
 
 

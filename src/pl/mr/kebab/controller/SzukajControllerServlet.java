@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SzukajMenuControllerServlet extends AbstractOwnerConrtollerServlet {
+public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,7 +24,7 @@ public class SzukajMenuControllerServlet extends AbstractOwnerConrtollerServlet 
 
     @Override
     protected void list(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        response.sendRedirect(request.getContextPath() + "/szukajMenu?operacja=search");
+        response.sendRedirect(request.getContextPath() + "/szukaj?operacja=search");
     }
 
     @Override
@@ -44,7 +44,7 @@ public class SzukajMenuControllerServlet extends AbstractOwnerConrtollerServlet 
 
         request.setAttribute("listMenu", list);
         request.setAttribute("menu", menu);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/szukaj/SzukajMenu.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/szukaj/Szukaj.jsp");
         dispatcher.forward(request, response);
     }
 
