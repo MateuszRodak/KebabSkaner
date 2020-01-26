@@ -1,5 +1,6 @@
 package pl.mr.kebab.dao;
 
+import org.h2.value.ValueString;
 import pl.mr.kebab.model.Menu;
 import pl.mr.kebab.model.Restauracja;
 
@@ -111,12 +112,12 @@ public class MenuDAO extends AbstractDAO {
         return list;
     }
 
-    public List<Menu> searchManyTables(Menu menu) throws SQLException {
+    public List<Menu> searchManyTables_old(Menu menu) throws SQLException {
         String sql;
         connect();
         PreparedStatement statement;
 
-        if (menu.getRestauracja()!= null && menu.getRestauracja().isDowoz()) {
+        if (menu.getRestauracja() != null && menu.getRestauracja().isDowoz()) {
             sql = "SELECT * FROM OWNER.MENU, OWNER.RESTAURACJA WHERE MENU.ID_REST=RESTAURACJA.ID and RESTAURACJA.DOWOZ = true";
         } else {
             sql = "SELECT * FROM OWNER.MENU WHERE 1=1";
@@ -148,6 +149,46 @@ public class MenuDAO extends AbstractDAO {
         } else {
             statement = jdbcConnection.prepareStatement(sql);
         }
+
+        ResultSet resultSet = statement.executeQuery();
+        List<Menu> list = list(resultSet);
+
+        statement.close();
+        disconnect();
+
+        return list;
+    }
+
+    public List<Menu> searchManyTables(Menu menu) throws SQLException {
+
+        //nazwaProduktu jest wymagana
+        boolean isCena = menu.getCena() > 0.0f;
+        boolean isDowoz = menu.getRestauracja() != null && menu.getRestauracja().isDowoz();
+
+        connect();
+        PreparedStatement statement;
+
+        //tabele:
+        String sql = "SELECT * FROM OWNER.MENU";
+
+        if (isDowoz) {
+            sql += " inner join OWNER.RESTAURACJA on MENU.ID_REST = RESTAURACJA.ID";
+        }
+
+        //warunki:
+        sql += " WHERE lower(MENU.NAZWA_PRODUKTU) like " +  ValueString.get("%" + menu.getNazwaProduktu().toLowerCase() + "%") .getSQL();  //wymagany, ValueString.get() - zabezpieczenie przed sqliniection
+
+        if (isCena) {
+            sql += " and MENU.CENA <= " + menu.getCena();
+        }
+
+        if (isDowoz) {
+            sql += " and RESTAURACJA.DOWOZ = true";
+        }
+
+        System.out.println(sql);
+
+        statement = jdbcConnection.prepareStatement(sql);
 
         ResultSet resultSet = statement.executeQuery();
         List<Menu> list = list(resultSet);

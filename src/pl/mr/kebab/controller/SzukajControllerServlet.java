@@ -34,12 +34,17 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
         String nazwaProduktu = request.getParameter("nazwaProduktu");
         String cena = (request.getParameter("cena"));
         String dowoz = (request.getParameter("dowoz"));
+        boolean allowSearch = false;
 
         if (clicked != null && !clicked.equals("")) {
             Menu menu = new Menu();
+
+            //parametr wymagany
             if (nazwaProduktu != null && !nazwaProduktu.equals("")) {
                 menu.setNazwaProduktu(nazwaProduktu);
+                allowSearch = true;
             }
+
             if (cena != null && !cena.equals("") && !cena.equals("0.0")) {
                 menu.setCena(Float.parseFloat(cena));
             }
@@ -50,8 +55,10 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
                 menu.setRestauracja(restauracja);
             }
 
-            List<Menu> list = menuDAO.searchManyTables(menu);
-            request.setAttribute("listMenu", list);
+            if (allowSearch) {
+                List<Menu> list = menuDAO.searchManyTables(menu);
+                request.setAttribute("listMenu", list);
+            }
 
             request.setAttribute("menu", menu);
         }

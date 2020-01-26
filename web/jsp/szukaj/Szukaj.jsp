@@ -44,7 +44,7 @@
 
                 <tr>
                     <td>
-                        Nazwa produktu: <input type="text" name="nazwaProduktu" size="10" value="<c:out value='${menu.nazwaProduktu}' />"/>
+                        Nazwa produktu: <input type="text" name="nazwaProduktu" size="10" value="<c:out value='${menu.nazwaProduktu}' />"/> *
                     </td>
                     <td>
                         Dowóz: <input type="checkbox" name="dowoz" value="true" <c:if test="${menu.restauracja.dowoz==true}">checked=checked</c:if>>
@@ -63,7 +63,16 @@
                         <input type="submit" value="Szukaj"/>
                     </td>
                 </tr>
+                <c:if test="${param.clicked && empty menu.nazwaProduktu}">
+                    <tr>
+                        <td colspan="2"><font color="red">
+                            Wypełnij wymagane parametry!
+                        </font>
+                        </td>
+                    </tr>
+                </c:if>
             </table>
+            * - wartość wymagana
         </form>
 </div>
 <div align="center">
