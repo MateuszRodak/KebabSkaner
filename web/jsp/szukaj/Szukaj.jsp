@@ -51,7 +51,7 @@
                         Dowóz: <input type="checkbox" name="dowoz" value="true" <c:if test="${menu.restauracja.dowoz==true}">checked=checked</c:if>>
                     </td>
                     <td>
-                        Dodatek: <input type="text" name="dodatek" size="10" value="<c:out value='${menu.dodatkiMenuList[0].listaDodatkow.nazwa}' />"/>
+                        Aktualnie otwarte: <input type="checkbox" name="otwarte" value="true" <c:if test="${menu.restauracja.restOpen==true}">checked=checked</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -69,7 +69,9 @@
                             </c:forEach>
                         </select>
                     </td>
-                    <td></td>
+                    <td>
+                        Dodatek: <input type="text" name="dodatek" size="10" value="<c:out value='${menu.dodatkiMenuList[0].listaDodatkow.nazwa}' />"/>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="3" align="center">

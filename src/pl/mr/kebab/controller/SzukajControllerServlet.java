@@ -41,6 +41,7 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
         String dowoz = (request.getParameter("dowoz"));
         String porcja = (request.getParameter("porcja"));
         String dodatek = (request.getParameter("dodatek"));
+        String otwarte = (request.getParameter("otwarte"));
 
         boolean allowSearch = false;
 
@@ -79,6 +80,17 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
                 List<DodatkiMenu> dodatkiMenuList = new ArrayList<>();
                 dodatkiMenuList.add(dodatkiMenu);
                 menu.setDodatkiMenuList(dodatkiMenuList);
+            }
+
+            if (otwarte != null && !otwarte.equals("")) {
+                // bo mogl juz byc dowoz
+                if (menu.getRestauracja() == null) {
+                    Restauracja restauracja = new Restauracja();
+                    restauracja.setRestOpen(Boolean.parseBoolean(otwarte));
+                    menu.setRestauracja(restauracja);
+                } else {
+                    menu.getRestauracja().setRestOpen(Boolean.parseBoolean(otwarte));
+                }
             }
 
             if (allowSearch) {

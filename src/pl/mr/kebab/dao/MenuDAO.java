@@ -168,6 +168,7 @@ public class MenuDAO extends AbstractDAO {
         //nazwaProduktu jest wymagana
         boolean isCena = menu.getCena() > 0.0f;
         boolean isDowoz = menu.getRestauracja() != null && menu.getRestauracja().isDowoz();
+        boolean isOpen = menu.getRestauracja() != null && menu.getRestauracja().isRestOpen();
         boolean isPorcja = menu.getPorcjaList() != null && menu.getPorcjaList().size() > 0;
         boolean isDodatek = menu.getDodatkiMenuList() != null && menu.getDodatkiMenuList().size() > 0;
 
@@ -177,7 +178,7 @@ public class MenuDAO extends AbstractDAO {
         //tabele:
         String sql = "SELECT * FROM OWNER.MENU";
 
-        if (isDowoz) {
+        if (isDowoz || isOpen) {
             sql += " inner join OWNER.RESTAURACJA on MENU.ID_REST = RESTAURACJA.ID";
         }
 
@@ -199,6 +200,10 @@ public class MenuDAO extends AbstractDAO {
 
         if (isDowoz) {
             sql += " and RESTAURACJA.DOWOZ = true";
+        }
+
+        if (isOpen) {
+            sql += " and RESTAURACJA.H_OTW < current_time and RESTAURACJA.H_ZAM > current_time";
         }
 
         //na przyszlosc, mozna podac wiele rozmiarow
@@ -257,8 +262,6 @@ public class MenuDAO extends AbstractDAO {
             } catch (SQLException e) {
                 porcjaExist = false;
             }
-
-            System.out.println(wielkosc + jednostka);
 
             Menu menu = new Menu(id, idRest, nazwaProduktu, cena);
 

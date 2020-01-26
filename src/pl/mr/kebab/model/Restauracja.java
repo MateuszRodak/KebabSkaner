@@ -15,6 +15,7 @@ public class Restauracja {
     private Adres adres;
     private List<Menu> menuList;
     private List<Platnosc> platnoscList;
+    private boolean restOpen;
 
     public Restauracja() {
     }
@@ -110,5 +111,13 @@ public class Restauracja {
 
     public void setPlatnoscList(List<Platnosc> platnoscList) {
         this.platnoscList = platnoscList;
+    }
+
+    public boolean isRestOpen() {
+        return restOpen;
+    }
+
+    public void setRestOpen(boolean restOpen) {
+        this.restOpen = restOpen;
     }
 }
