@@ -50,7 +50,7 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
                 menu.setRestauracja(restauracja);
             }
 
-            List<Menu> list = menuDAO.search(menu);
+            List<Menu> list = menuDAO.searchManyTables(menu);
             request.setAttribute("listMenu", list);
 
             request.setAttribute("menu", menu);

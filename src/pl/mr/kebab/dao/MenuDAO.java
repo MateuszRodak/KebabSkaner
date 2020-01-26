@@ -70,6 +70,48 @@ public class MenuDAO extends AbstractDAO {
     }
 
     public List<Menu> search(Menu menu) throws SQLException {
+        String sql = "SELECT * FROM OWNER.MENU WHERE 1=1";
+        connect();
+        PreparedStatement statement = null;
+
+        if (menu.getNazwaProduktu() != null && menu.getCena() == 0.0f) {
+
+            sql += " and lower(MENU.NAZWA_PRODUKTU) like ?";
+
+            statement = jdbcConnection.prepareStatement(sql);
+            statement.setString(1, "%" + menu.getNazwaProduktu().toLowerCase() + "%");
+
+        } else if (menu.getNazwaProduktu() == null && menu.getCena() > 0.0f) {
+
+            sql += " and MENU.CENA <= ?";
+
+            statement = jdbcConnection.prepareStatement(sql);
+            statement.setFloat(1, menu.getCena());
+
+        } else if (menu.getNazwaProduktu() != null && menu.getCena() > 0.0f) {
+
+            sql += " and lower(MENU.NAZWA_PRODUKTU) like ?";
+            sql += " and MENU.CENA <= ?";
+
+            statement = jdbcConnection.prepareStatement(sql);
+            statement.setString(1, "%" + menu.getNazwaProduktu().toLowerCase() + "%");
+            statement.setFloat(2, menu.getCena());
+
+        } else {
+            sql += " and 1=2";
+            statement = jdbcConnection.prepareStatement(sql);
+        }
+
+        ResultSet resultSet = statement.executeQuery();
+        List<Menu> list = list(resultSet);
+
+        statement.close();
+        disconnect();
+
+        return list;
+    }
+
+    public List<Menu> searchManyTables(Menu menu) throws SQLException {
         String sql;
         connect();
         PreparedStatement statement;
