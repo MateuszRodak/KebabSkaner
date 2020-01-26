@@ -28,4 +28,11 @@ public abstract class AbstractDAO {
             jdbcConnection.close();
         }
     }
+
+    protected void commit() throws SQLException {
+        if (jdbcConnection != null && !jdbcConnection.isClosed()) {
+            jdbcConnection.commit();
+        }
+    }
+
 }

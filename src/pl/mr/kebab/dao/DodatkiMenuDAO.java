@@ -35,6 +35,7 @@ public class DodatkiMenuDAO extends AbstractDAO {
 
         boolean rowInserted = statement.executeUpdate() > 0;
         statement.close();
+        commit();
         disconnect();
         return rowInserted;
     }
@@ -147,6 +148,7 @@ public class DodatkiMenuDAO extends AbstractDAO {
 
         boolean rowDeleted = statement.executeUpdate() > 0;
         statement.close();
+        commit();
         disconnect();
         return rowDeleted;
     }
@@ -162,6 +164,7 @@ public class DodatkiMenuDAO extends AbstractDAO {
 
         boolean rowUpdated = statement.executeUpdate() > 0;
         statement.close();
+        commit();
         disconnect();
         return rowUpdated;
     }

@@ -39,6 +39,7 @@ public class MenuDAO extends AbstractDAO {
 
         boolean rowInserted = statement.executeUpdate() > 0;
         statement.close();
+        commit();
         disconnect();
         return rowInserted;
     }
@@ -304,6 +305,7 @@ public class MenuDAO extends AbstractDAO {
 
         boolean rowDeleted = statement.executeUpdate() > 0;
         statement.close();
+        commit();
         disconnect();
         return rowDeleted;
     }
@@ -320,6 +322,7 @@ public class MenuDAO extends AbstractDAO {
 
         boolean rowUpdated = statement.executeUpdate() > 0;
         statement.close();
+        commit();
         disconnect();
         return rowUpdated;
     }
