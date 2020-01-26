@@ -1,6 +1,7 @@
 package pl.mr.kebab.dao;
 
 import org.h2.value.ValueString;
+import pl.mr.kebab.model.DodatkiMenu;
 import pl.mr.kebab.model.Menu;
 import pl.mr.kebab.model.Porcja;
 import pl.mr.kebab.model.Restauracja;
@@ -168,6 +169,7 @@ public class MenuDAO extends AbstractDAO {
         boolean isCena = menu.getCena() > 0.0f;
         boolean isDowoz = menu.getRestauracja() != null && menu.getRestauracja().isDowoz();
         boolean isPorcja = menu.getPorcjaList() != null && menu.getPorcjaList().size() > 0;
+        boolean isDodatek = menu.getDodatkiMenuList() != null && menu.getDodatkiMenuList().size() > 0;
 
         connect();
         PreparedStatement statement;
@@ -183,6 +185,9 @@ public class MenuDAO extends AbstractDAO {
             sql += " inner join OWNER.PORCJA on MENU.ID = PORCJA.ID_MENU";
         }
 
+        if (isDodatek) {
+            sql += " inner join OWNER.DODATKI_MENU on MENU.ID = DODATKI_MENU.ID_MENU inner join OWNER.LISTA_DODATKOW on DODATKI_MENU.ID_LISTY_DODATKOW = LISTA_DODATKOW.ID";
+        }
 
         //warunki:
         sql += " WHERE lower(MENU.NAZWA_PRODUKTU) like " + ValueString.get("%" + menu.getNazwaProduktu().toLowerCase() + "%")
@@ -196,6 +201,7 @@ public class MenuDAO extends AbstractDAO {
             sql += " and RESTAURACJA.DOWOZ = true";
         }
 
+        //na przyszlosc, mozna podac wiele rozmiarow
         if (isPorcja) {
             sql += " and PORCJA.OPIS in (";
 
@@ -210,6 +216,12 @@ public class MenuDAO extends AbstractDAO {
             //Remove last comma
             csv = csv.substring(0, csv.length() - 1);
             sql += csv + ")";
+        }
+
+        // a tu mozna podac tylko jeden dodatek
+        if (isDodatek) {
+            sql += " and lower(LISTA_DODATKOW.NAZWA) like " + ValueString
+                    .get("%" + menu.getDodatkiMenuList().get(0).getListaDodatkow().getNazwa().toLowerCase() + "%").getSQL();
         }
 
         System.out.println(sql);
@@ -254,6 +266,11 @@ public class MenuDAO extends AbstractDAO {
             RestauracjaDAO restauracjaDAO = new RestauracjaDAO(jdbcConnection);
             Restauracja restauracja = restauracjaDAO.get(idRest);
             menu.setRestauracja(restauracja);
+
+            // dociagniecie dodatkow
+            DodatkiMenuDAO dodatkiMenuDAO = new DodatkiMenuDAO(jdbcConnection);
+            List<DodatkiMenu> dodatkiMenuList = dodatkiMenuDAO.simpleListForMenu(id);
+            menu.setDodatkiMenuList(dodatkiMenuList);
 
             // wypelnienie porcji jesli istnieje w zwracanych danych
             if (porcjaExist) {

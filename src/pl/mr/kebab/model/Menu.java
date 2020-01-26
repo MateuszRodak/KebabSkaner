@@ -10,6 +10,7 @@ public class Menu {
 
     private Restauracja restauracja;
     private List<Porcja> porcjaList;
+    private List<DodatkiMenu> dodatkiMenuList;
 
     public Menu() {
     }
@@ -77,5 +78,13 @@ public class Menu {
 
     public void setPorcjaList(List<Porcja> porcjaList) {
         this.porcjaList = porcjaList;
+    }
+
+    public List<DodatkiMenu> getDodatkiMenuList() {
+        return dodatkiMenuList;
+    }
+
+    public void setDodatkiMenuList(List<DodatkiMenu> dodatkiMenuList) {
+        this.dodatkiMenuList = dodatkiMenuList;
     }
 }

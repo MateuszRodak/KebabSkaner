@@ -1,6 +1,8 @@
 package pl.mr.kebab.controller;
 
 import pl.mr.kebab.dao.MenuDAO;
+import pl.mr.kebab.model.DodatkiMenu;
+import pl.mr.kebab.model.ListaDodatkow;
 import pl.mr.kebab.model.Menu;
 import pl.mr.kebab.model.Porcja;
 import pl.mr.kebab.model.Restauracja;
@@ -38,6 +40,7 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
         String cena = (request.getParameter("cena"));
         String dowoz = (request.getParameter("dowoz"));
         String porcja = (request.getParameter("porcja"));
+        String dodatek = (request.getParameter("dodatek"));
 
         boolean allowSearch = false;
 
@@ -68,11 +71,20 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
                 menu.setPorcjaList(porcjaList);
             }
 
+            if (dodatek != null && !dodatek.equals("")) {
+                DodatkiMenu dodatkiMenu = new DodatkiMenu();
+                ListaDodatkow listaDodatkow = new ListaDodatkow();
+                listaDodatkow.setNazwa(dodatek);
+                dodatkiMenu.setListaDodatkow(listaDodatkow);
+                List<DodatkiMenu> dodatkiMenuList = new ArrayList<>();
+                dodatkiMenuList.add(dodatkiMenu);
+                menu.setDodatkiMenuList(dodatkiMenuList);
+            }
+
             if (allowSearch) {
                 List<Menu> list = menuDAO.searchManyTables(menu);
                 request.setAttribute("listMenu", list);
             }
-
             request.setAttribute("menu", menu);
         }
 

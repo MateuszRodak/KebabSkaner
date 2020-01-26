@@ -50,6 +50,9 @@
                     <td>
                         Dowóz: <input type="checkbox" name="dowoz" value="true" <c:if test="${menu.restauracja.dowoz==true}">checked=checked</c:if>>
                     </td>
+                    <td>
+                        Dodatek: <input type="text" name="dodatek" size="10" value="<c:out value='${menu.dodatkiMenuList[0].listaDodatkow.nazwa}' />"/>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -66,15 +69,16 @@
                             </c:forEach>
                         </select>
                     </td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center">
+                    <td colspan="3" align="center">
                         <input type="submit" value="Szukaj"/>
                     </td>
                 </tr>
                 <c:if test="${param.clicked && empty menu.nazwaProduktu}">
                     <tr>
-                        <td colspan="2"><font color="red">
+                        <td colspan="3"><font color="red">
                             Wypełnij wymagane parametry!
                         </font>
                         </td>
@@ -90,16 +94,19 @@
         <tr>
             <th>ID</th>
             <th>Restauracja</th>
+            <th>Czynne:</th>
             <th>Nazwa produktu</th>
             <th>Cena PLN</th>
             <th>Dowóz</th>
             <th>Rozmiar</th>
             <th>Płatność</th>
+            <th>Dodatki</th>
         </tr>
         <c:forEach var="menuL" items="${listMenu}">
             <tr>
                 <td><c:out value="${menuL.id}"/></td>
                 <td><c:out value="${menuL.restauracja.nazwa}"/>, <c:out value="${menuL.restauracja.adres.miejscowosc}"/></td>
+                <td><c:out value="${menuL.restauracja.godzOtw}"/><br><c:out value="${menuL.restauracja.godzZam}"/></td>
                 <td><c:out value="${menuL.nazwaProduktu}"/></td>
                 <td><c:out value="${menuL.cena}"/></td>
                 <td><c:if test="${menuL.restauracja.dowoz}">Tak</c:if><c:if test="${!menuL.restauracja.dowoz}">Nie</c:if></td>
@@ -107,6 +114,11 @@
                 <td>
                     <c:forEach items="${menuL.restauracja.platnoscList}" var="elementPlatnosc">
                         ${elementPlatnosc.rodzajPlatnosci},
+                    </c:forEach>
+                </td>
+                <td>
+                    <c:forEach items="${menuL.dodatkiMenuList}" var="elementDodatki">
+                        ${elementDodatki.listaDodatkow.nazwa}<br>
                     </c:forEach>
                 </td>
 

@@ -39,7 +39,7 @@ public class DodatkiMenuDAO extends AbstractDAO {
         return rowInserted;
     }
 
-    private List<DodatkiMenu> list(ResultSet resultSet) throws SQLException {
+    private List<DodatkiMenu> list(ResultSet resultSet, boolean withDependencies) throws SQLException {
         List<DodatkiMenu> listDodatkiMenu = new ArrayList<>();
 
         while (resultSet.next()) {
@@ -49,10 +49,13 @@ public class DodatkiMenuDAO extends AbstractDAO {
 
             DodatkiMenu dodatkiMenu = new DodatkiMenu(id, idMenu, idListyDodatkow);
 
-            //  dociągniecie danych restauracji
-            MenuDAO menuDAO = new MenuDAO(jdbcConnection);
-            Menu menu = menuDAO.get(idMenu);
-            dodatkiMenu.setMenu(menu);
+            if (withDependencies) {
+                //  dociągniecie danych menu
+                MenuDAO menuDAO = new MenuDAO(jdbcConnection);
+                Menu menu = menuDAO.get(idMenu);
+                dodatkiMenu.setMenu(menu);
+
+            }
 
             ListaDodatkowDAO listaDodatkowDAO = new ListaDodatkowDAO(jdbcConnection);
             ListaDodatkow listaDodatkow = listaDodatkowDAO.get(idListyDodatkow);
@@ -103,6 +106,7 @@ public class DodatkiMenuDAO extends AbstractDAO {
 
         return listDodatkiMenu;
     }
+
     public List<DodatkiMenu> listForMenu(int idMenu) throws SQLException {
         String sql = "SELECT * FROM OWNER.DODATKI_MENU WHERE ID_MENU = ?";
 
@@ -111,7 +115,7 @@ public class DodatkiMenuDAO extends AbstractDAO {
         statement.setInt(1, idMenu);
 
         ResultSet resultSet = statement.executeQuery();
-        List<DodatkiMenu> list = list(resultSet);
+        List<DodatkiMenu> list = list(resultSet, true);
 
         statement.close();
         disconnect();
@@ -119,6 +123,19 @@ public class DodatkiMenuDAO extends AbstractDAO {
         return list;
     }
 
+    public List<DodatkiMenu> simpleListForMenu(int idMenu) throws SQLException {
+        String sql = "SELECT * FROM OWNER.DODATKI_MENU WHERE ID_MENU = ?";
+
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setInt(1, idMenu);
+
+        ResultSet resultSet = statement.executeQuery();
+        List<DodatkiMenu> list = list(resultSet, false);
+
+        statement.close();
+
+        return list;
+    }
 
     public boolean delete(DodatkiMenu dodatkiMenu) throws SQLException {
         String sql = "DELETE FROM OWNER.DODATKI_MENU where ID = ?";
