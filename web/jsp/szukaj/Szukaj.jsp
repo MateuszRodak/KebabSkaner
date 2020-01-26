@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
+<c:set var="opisEnums" value="<%=pl.mr.kebab.model.enums.OpisPorcja.values()%>"/>
 
 <html>
 <head>
@@ -55,7 +56,15 @@
                         Cena do: <input type="text" name="cena" size="5" value="<c:out value='${menu.cena}' />"/> PLN
                     </td>
                     <td>
-                        x
+                        Porcja:
+                        <select name="porcja">
+                            <option value="">Wszystkie rozmiary</option>
+                            <c:forEach items="${opisEnums}" var="opisEnum">
+                                <option value="${opisEnum.value}" <c:if test="${opisEnum eq menu.porcjaList[0].opis}">selected="selected"</c:if>>
+                                        ${opisEnum.value}
+                                </option>
+                            </c:forEach>
+                        </select>
                     </td>
                 </tr>
                 <tr>
@@ -84,6 +93,7 @@
             <th>Nazwa produktu</th>
             <th>Cena PLN</th>
             <th>Dowóz</th>
+            <th>Rozmiar</th>
             <th>Płatność</th>
         </tr>
         <c:forEach var="menuL" items="${listMenu}">
@@ -93,6 +103,7 @@
                 <td><c:out value="${menuL.nazwaProduktu}"/></td>
                 <td><c:out value="${menuL.cena}"/></td>
                 <td><c:if test="${menuL.restauracja.dowoz}">Tak</c:if><c:if test="${!menuL.restauracja.dowoz}">Nie</c:if></td>
+                <td><c:out value="${menuL.porcjaList[0].wielkosc}"/> <c:out value="${menuL.porcjaList[0].jednostka}"/></td>
                 <td>
                     <c:forEach items="${menuL.restauracja.platnoscList}" var="elementPlatnosc">
                         ${elementPlatnosc.rodzajPlatnosci},

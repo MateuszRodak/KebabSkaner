@@ -2,7 +2,10 @@ package pl.mr.kebab.dao;
 
 import org.h2.value.ValueString;
 import pl.mr.kebab.model.Menu;
+import pl.mr.kebab.model.Porcja;
 import pl.mr.kebab.model.Restauracja;
+import pl.mr.kebab.model.enums.JednostkaPorcja;
+import pl.mr.kebab.model.enums.OpisPorcja;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -164,6 +167,7 @@ public class MenuDAO extends AbstractDAO {
         //nazwaProduktu jest wymagana
         boolean isCena = menu.getCena() > 0.0f;
         boolean isDowoz = menu.getRestauracja() != null && menu.getRestauracja().isDowoz();
+        boolean isPorcja = menu.getPorcjaList() != null && menu.getPorcjaList().size() > 0;
 
         connect();
         PreparedStatement statement;
@@ -175,8 +179,14 @@ public class MenuDAO extends AbstractDAO {
             sql += " inner join OWNER.RESTAURACJA on MENU.ID_REST = RESTAURACJA.ID";
         }
 
+        if (isPorcja) {
+            sql += " inner join OWNER.PORCJA on MENU.ID = PORCJA.ID_MENU";
+        }
+
+
         //warunki:
-        sql += " WHERE lower(MENU.NAZWA_PRODUKTU) like " +  ValueString.get("%" + menu.getNazwaProduktu().toLowerCase() + "%") .getSQL();  //wymagany, ValueString.get() - zabezpieczenie przed sqliniection
+        sql += " WHERE lower(MENU.NAZWA_PRODUKTU) like " + ValueString.get("%" + menu.getNazwaProduktu().toLowerCase() + "%")
+                .getSQL();  //warunek wymagany, ValueString.get() - zabezpieczenie przed sqliniection
 
         if (isCena) {
             sql += " and MENU.CENA <= " + menu.getCena();
@@ -184,6 +194,22 @@ public class MenuDAO extends AbstractDAO {
 
         if (isDowoz) {
             sql += " and RESTAURACJA.DOWOZ = true";
+        }
+
+        if (isPorcja) {
+            sql += " and PORCJA.OPIS in (";
+
+            StringBuilder csvBuilder = new StringBuilder();
+            for (Porcja porcja : menu.getPorcjaList()) {
+                csvBuilder.append("'");
+                csvBuilder.append(porcja.getOpis().getValue()); //enum
+                csvBuilder.append("'");
+                csvBuilder.append(",");
+            }
+            String csv = csvBuilder.toString();
+            //Remove last comma
+            csv = csv.substring(0, csv.length() - 1);
+            sql += csv + ")";
         }
 
         System.out.println(sql);
@@ -208,12 +234,37 @@ public class MenuDAO extends AbstractDAO {
             String nazwaProduktu = resultSet.getString("NAZWA_PRODUKTU");
             float cena = Float.parseFloat(resultSet.getString("CENA"));
 
+            int wielkosc = 0;
+            String jednostka = null;
+            String opis = null;
+            boolean porcjaExist = true;
+            try {
+                wielkosc = resultSet.getInt("WIELKOSC");
+                jednostka = resultSet.getString("JEDNOSTKA");
+                opis = resultSet.getString("OPIS");
+            } catch (SQLException e) {
+                porcjaExist = false;
+            }
+
+            System.out.println(wielkosc + jednostka);
+
             Menu menu = new Menu(id, idRest, nazwaProduktu, cena);
 
             //  dociągniecie danych restauracji
             RestauracjaDAO restauracjaDAO = new RestauracjaDAO(jdbcConnection);
             Restauracja restauracja = restauracjaDAO.get(idRest);
             menu.setRestauracja(restauracja);
+
+            // wypelnienie porcji jesli istnieje w zwracanych danych
+            if (porcjaExist) {
+                Porcja p = new Porcja();
+                p.setOpis(OpisPorcja.getEnum(opis));
+                p.setWielkosc(wielkosc);
+                p.setJednostka(JednostkaPorcja.getEnum(jednostka));
+                List<Porcja> porcjaList = new ArrayList<>();
+                porcjaList.add(p);
+                menu.setPorcjaList(porcjaList);
+            }
 
             listMenu.add(menu);
         }

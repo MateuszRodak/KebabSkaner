@@ -2,7 +2,9 @@ package pl.mr.kebab.controller;
 
 import pl.mr.kebab.dao.MenuDAO;
 import pl.mr.kebab.model.Menu;
+import pl.mr.kebab.model.Porcja;
 import pl.mr.kebab.model.Restauracja;
+import pl.mr.kebab.model.enums.OpisPorcja;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
@@ -34,6 +37,8 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
         String nazwaProduktu = request.getParameter("nazwaProduktu");
         String cena = (request.getParameter("cena"));
         String dowoz = (request.getParameter("dowoz"));
+        String porcja = (request.getParameter("porcja"));
+
         boolean allowSearch = false;
 
         if (clicked != null && !clicked.equals("")) {
@@ -53,6 +58,14 @@ public class SzukajControllerServlet extends AbstractOwnerConrtollerServlet {
                 Restauracja restauracja = new Restauracja();
                 restauracja.setDowoz(Boolean.parseBoolean(dowoz));
                 menu.setRestauracja(restauracja);
+            }
+
+            if (porcja != null && !porcja.equals("")) {
+                Porcja p = new Porcja();
+                p.setOpis(OpisPorcja.getEnum(porcja));
+                List<Porcja> porcjaList = new ArrayList<>();
+                porcjaList.add(p);
+                menu.setPorcjaList(porcjaList);
             }
 
             if (allowSearch) {
