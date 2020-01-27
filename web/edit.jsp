@@ -12,6 +12,7 @@
 <html>
   <head>
     <title>Kebabownia - Edytowanie</title>
+    <link rel="stylesheet" href="Style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   </head>
   <body>

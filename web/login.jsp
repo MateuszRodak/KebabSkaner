@@ -12,6 +12,7 @@ To change this template use File | Settings | File Templates.
 <html>
 <head>
     <title>Kebabownia - logowanie</title>
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
 <h1>Logowanie do systemu</h1>

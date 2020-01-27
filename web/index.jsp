@@ -3,11 +3,12 @@
 <html>
 <head>
     <title>Kebabownia - home</title>
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
 
-<h1>Home</h1>
-ble ble ble
+<h1>KebabSkaner</h1>
+Wyszukiwarka produktów kebabowych
 <br>
 <br>
 <a href="search.jsp">Wyszukiwarka</a>
