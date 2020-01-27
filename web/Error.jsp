@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>Error</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <center>
